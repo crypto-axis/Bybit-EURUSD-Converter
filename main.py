@@ -14,7 +14,7 @@ eurdata['Date'] = pd.to_datetime(eurdata['Date'])
 eurdata['Date'] = eurdata['Date']
 eurdata['eurusd_price_date'] = eurdata['Date']
 
-data['time'] = pd.to_datetime(data['time'])
+data['Transaction Time(UTC+0)'] = pd.to_datetime(data['Transaction Time(UTC+0)'])
 data = data.to_dict('records')
 eurdata = eurdata.to_dict('records')
 
@@ -41,7 +41,7 @@ for i in eurdata:
 eurdata = new_eurdata
 
 for i in data:
-    op_date = i['time'].to_pydatetime().date()
+    op_date = i['Transaction Time(UTC+0)'].to_pydatetime().date()
     for j in eurdata:
         if j['eurusd_price_date'] == op_date:
             print(op_date ," : " ,j['eurusd_price_date'])
